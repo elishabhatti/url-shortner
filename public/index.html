@@ -16,7 +16,7 @@
         </div>
         <div>
           <label for="shortCode">Shorten Url:</label>
-          <input type="text" name="shortCode" id="shortCode" required />
+          <input type="text" name="shortCode" id="shortCode" />
         </div>
         <button type="submit">Shorten</button>
       </form>
@@ -26,12 +26,29 @@
     <script>
       document
         .querySelector("#shorten-form")
-        .addEventListener("submit", (e) => {
+        .addEventListener("submit", async (e) => {
           e.preventDefault();
 
           const formData = new FormData(event.target);
           const url = formData.get("url");
           const shortCode = formData.get("shortCode");
+
+          try {
+            const reponse = await fetch("/shorten", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ url, shortCode }),
+            });
+            if (reponse.ok) {
+              alert("Form Submitted Successfully!");
+              e.target.reset();
+            } else {
+              const errorMessage = await reponse.text();
+              alert(errorMessage);
+            }
+          } catch (error) {
+            console.error(error);
+          }
         });
     </script>
   </body>
