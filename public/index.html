@@ -24,13 +24,15 @@
       <ul id="Shortend-urls"></ul>
     </div>
     <script>
-        document.querySelector("#shorten-form").addEventListener("submit", (e) => {
-            e.preventDefault();
+      document
+        .querySelector("#shorten-form")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
 
-            const formData = new FormData(event.target);
-            const url = formData.get("url")
-            const shortCode = formData.get("shortCode")
-        })
+          const formData = new FormData(event.target);
+          const url = formData.get("url");
+          const shortCode = formData.get("shortCode");
+        });
     </script>
   </body>
 </html>

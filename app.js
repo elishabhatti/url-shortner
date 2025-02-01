@@ -10,7 +10,7 @@ const serverFile = async (res, filePath, contentType) => {
     res.writeHead(200, { "Content-Type": contentType });
     res.end(data);
   } catch (error) {
-    res.writeHead(404, { "Content-Type": "text/html" });
+    res.writeHead(404, { "Content-Type": "text/plain" });
     res.end("404 page not found");
   }
 };
@@ -22,6 +22,21 @@ const server = createServer(async (req, res) => {
     } else if (req.url === "/style.css") {
       return serverFile(res, path.join("public", "style.css"), "text/css");
     }
+  }
+  if (req.method === POST && req.url === "/shorten") {
+    const body = "";
+    req.on("data", (chunk) => {
+      body = body + chunk;
+    });
+    req.on("end", () => {
+      console.log(body);
+      const { url, shortCode } = JSON.parse(body);
+
+      if (!url) {
+        res.writeHead(404, { "Content-Type": "text/plain" });
+        return res.end("URl is requried");
+      }
+    });
   }
 });
 
