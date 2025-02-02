@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Url Shortner</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -21,9 +21,25 @@
         <button type="submit">Shorten</button>
       </form>
       <h2>Shortend Urls</h2>
-      <ul id="Shortend-urls"></ul>
+      <ul id="shortend-urls"></ul>
     </div>
     <script>
+      const fetchShortendUrl = async () => {
+        const response = await fetch("/links");
+        const links = await response.json();
+        console.log("Links: ", links);
+
+        const list = document.getElementById("shortend-urls");
+        list.innerHTML = "";
+
+        for (const [shortCode, url] of Object.entries(links)) {
+          const li = document.createElement("li");
+          const truncatedUrl =
+            url.length >= 30 ? `${url.slice(0, 35)}...` : url;
+          li.innerHTML = `<a href="/${shortCode}" target="_blank">${window.location.origin}/${shortCode}</a> - ${truncatedUrl}`;
+          list.appendChild(li);
+        }
+      };
       document
         .querySelector("#shorten-form")
         .addEventListener("submit", async (e) => {
@@ -50,6 +66,8 @@
             console.error(error);
           }
         });
+
+      fetchShortendUrl();
     </script>
   </body>
 </html>

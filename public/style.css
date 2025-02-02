@@ -7,8 +7,8 @@
 body {
   display: flex;
   justify-content: center;
+  padding: 4rem;
   align-items: center;
-  height: 100vh;
 }
 .container h2 {
   margin: 10px 0;
@@ -17,7 +17,7 @@ body {
   font-weight: 600;
 }
 .container {
-  width: 300px;
+  width: 350px;
   padding: 20px;
   margin: 20px;
   border-radius: 10px;
