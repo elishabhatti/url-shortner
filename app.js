@@ -9,7 +9,7 @@ const PORT = 3000;
 const DATA_FILE = path.join("data", "links.json");
 
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static("public"));  
 app.use(express.urlencoded({ extended: true }));
 
 const serveFile = async (res, filePath, contentType) => {
@@ -50,7 +50,9 @@ app.get("/", async (req, res) => {
       Object.entries(links)
         .map(
           ([shortCode, url]) =>
-            `<li><a href="/${shortCode}" target="_blank">${req.get('host')}/${shortCode}</a> - ${url}</li>`
+            `<li><a href="/${shortCode}" target="_blank">${req.get(
+              "host"
+            )}/${shortCode}</a> - ${url}</li>`
         )
         .join("")
     );

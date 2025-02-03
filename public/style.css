@@ -4,41 +4,98 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body {
   display: flex;
   justify-content: center;
-  padding: 4rem;
   align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
 }
-.container h2 {
-  margin: 10px 0;
+
+li {
+  list-style: none;
 }
-.container label {
-  font-weight: 600;
-}
+
 .container {
-  width: 350px;
-  padding: 20px;
-  margin: 20px;
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  overflow: hidden;
+  padding: 2rem;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  border: 2px solid black;
 }
+
+.container h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.container label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #555;
+  text-align: left;
+}
+
 .container input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid gray;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
   outline: none;
-  border-radius: 5px;
-  margin: 5px 0;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+.container input:focus {
+  border-color: #2ab8ff;
+  box-shadow: 0 0 8px rgba(42, 184, 255, 0.3);
+}
+
 .container button {
   width: 100%;
   cursor: pointer;
-  background-color: rgb(42, 184, 255);
-  margin: 10px 0;
-  outline: none;
+  background: linear-gradient(135deg, #2ab8ff, #148fcc);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   color: white;
-  padding: 10px 0;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* Styling for the list of shortened URLs */
+.shortened-urls {
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.shortened-urls li {
+  margin-bottom: 1rem;
+  padding: 10px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  transition: background 0.3s ease;
+}
+
+.shortened-urls li:hover {
+  background: #f1f1f1;
+}
+
+.shortened-urls a {
+  color: #2ab8ff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.shortened-urls a:hover {
+  color: #148fcc;
 }
