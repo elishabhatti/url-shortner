@@ -9,7 +9,7 @@
   <body>
     <div class="container">
       <h2>URL Shortner</h2>
-      <form id="shorten-form">
+      <form action="/" method="post">
         <div>
           <label for="url">Url:</label>
           <input type="url" name="url" id="url" required />
@@ -21,13 +21,14 @@
         <button type="submit">Shorten</button>
       </form>
       <h2>Shortend Urls</h2>
-      <ul id="shortend-urls"></ul>
+      <ul>
+        {{ shortened_urls }}
+      </ul>
     </div>
-    <script>
+    <!-- <script>
       const fetchShortendUrl = async () => {
         const response = await fetch("/links");
         const links = await response.json();
-        console.log("Links: ", links);
 
         const list = document.getElementById("shortend-urls");
         list.innerHTML = "";
@@ -41,7 +42,7 @@
         }
       };
       document
-        .querySelector("#shorten-form")
+        .getElementById("shorten-form")
         .addEventListener("submit", async (e) => {
           e.preventDefault();
 
@@ -68,6 +69,6 @@
         });
 
       fetchShortendUrl();
-    </script>
+    </script> -->
   </body>
 </html>
